@@ -1,0 +1,26 @@
+version: "3.2"
+services:
+  api:
+    build:
+      context: ./api/
+      dockerfile: dev.Dockerfile
+    ports:
+      - 8000:8000
+    volumes:
+      - ./api/:/usr/app/
+  # client:
+  #   build:
+  #     context: ./client/
+  #     dockerfile: dev.Dockerfile
+  #   tty: true
+  #   ports:
+  #     - 8080:3000
+  #   volumes:
+  #   - ./client/:/usr/app/
+  #   - /usr/app/node_modules/
+  #   environment:
+  #     - NODE_ENV=development
+  db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_PASSWORD=password
